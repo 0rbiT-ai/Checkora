@@ -339,7 +339,7 @@ def ai_move(request):
     depth_map = {'easy': 2, 'medium': 3, 'hard': 5}
     depth = depth_map.get(difficulty, 3)
 
-    best = game.get_ai_move(depth=depth)
+    #remove duplicate function call
     best = game.get_ai_move(depth=depth)
     
     if not best:

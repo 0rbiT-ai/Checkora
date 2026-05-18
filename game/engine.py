@@ -303,7 +303,8 @@ DP cache is intentionally excluded to save cookie space."""
                 stderr=subprocess.PIPE,
                 text=True,
             )
-            stdout, _ = proc.communicate(input=command, timeout=5)
+            #increase timeout from 5->20 seconds
+            stdout, _ = proc.communicate(input=command, timeout=20)
             return stdout.strip()
         except (subprocess.TimeoutExpired, OSError):
             return None

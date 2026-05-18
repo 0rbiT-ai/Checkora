@@ -868,10 +868,14 @@
                         if (data.valid) {
                             playSound(data);
                             const mv = data.ai_move;
-                            await animateMove(mv.from_row, mv.from_col, mv.to_row, mv.to_col);
+                            if (mv) {
+                                await animateMove(mv.from_row, mv.from_col, mv.to_row, mv.to_col);
+                                lastMove = { from: [mv.from_row, mv.from_col], to: [mv.to_row, mv.to_col] };
+                            } else {
+                                lastMove = null;
+                            }
                             board = parseBoard(data.board);
                             turn = data.current_turn;
-                            lastMove = { from: [mv.from_row, mv.from_col], to: [mv.to_row, mv.to_col] };
                             whiteTime = data.white_time;
                             blackTime = data.black_time;
     
